@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* CSS kodları burada bulunacak */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            /*background-color:black;*/
+            background: rgba(0, 0, 0, 0.5);
+            color: #fff;
+            text-align: center;
+            padding: 5px;
+        }
+
+        nav ul {
+            list-style: none;
+        }
+
+        nav ul li {
+            display: inline-block;
+            margin-right: 20px;
+            width: 200px;
+            padding: -10px;
+        }
+
+        nav ul li :hover {
+            color:gray;
+            transition: 0.5s;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #fff;
+        }
+
+        section {
+            display: none;
+            padding: 2rem;
+            color: #fff;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 10px 20px;
+            /*background-color:black;*/
+            background: rgba(0, 0, 0, 0.5);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        form {
+            display:grid;
+            grid-gap: 10px;
+        }
+
+        form input,textarea,button,select{
+            background: transparent; /* Input alanını şeffaf yapar */
+            border: 1px solid #fff; /* Kenar çizgilerini beyaz yapar */
+            color: #fff; /* Yazı rengini beyaz yapar */
+            border-radius: 10px;
+        }
+        
+        iframe {
+            width: 100%;
+            height: 400px;
+        }
+
+        footer {
+            background: rgba(0, 0, 0, 0.5);
+            /*background-color:black;*/
+            color: #fff;
+            text-align: center;
+            padding: 1rem;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        .logo{
+           margin-right: 0px;
+        }
+        body{
+            background-image:url("arkaplan.png");
+            
+        }
+        
+
+    </style>
+    <title>Fitness Website</title>
+</head>
+<body>
+    <header>
+        <!--<h1>F   I   T   L   I   F   E</h1>-->
+        
+        <nav>
+            <ul>
+                <li class="logo"><a href="#" class=""><img src="logo2.png" width="100" height="100" alt="Örnek Resim" border="0" /></a></li>
+                <li><strong><a href="#home">Ana Sayfa</a></strong></li>
+                <li><strong><a href="#about">Hakkında</a></strong></li>
+                <li><strong><a href="#contact">İletişim</a></strong></li>
+                <li><strong><a href="#register">Kayıt</a></strong></li>
+                <li><strong><a href="#login">Giriş Yap</a></strong></li>
+                <li><strong><a href="#videos">Video</a></strong></li>
+                <li><strong><a onclick="updateProfile()">Profili Düzenle</a></strong></li>
+               <!-- <li><button type="button" onclick="updateProfile()">Profili düzenle</button></li>-->
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home">
+        <h2>Hoş geldiniz Fitness koçluguna</h2>
+        <p>Fitness hedeflerinize ulaşmak için kişiselleştirilmiş antrenman programları ve beslenme planları alın.</p>
+        
+        <h2>FitLife Nasıl Çalışır?</h2>
+        <ol>
+            <li><strong>Kaydolun ve Profilinizi Oluşturun:</strong> Fitness yolculuğunuza başlamak için FitLife'a kaydolun ve kişisel profilinizi oluşturun.</li>
+            <li><strong>Deneyimli Fitness Antrenörleriyle Bağlantı Kurun:</strong> FitLife, sizleri deneyimli fitness antrenörleri ile bir araya getirir. İhtiyacınıza uygun bir antrenör seçin ve iletişime geçin.</li>
+            <li><strong>Kişiselleştirilmiş Egzersiz Programları ve Beslenme Planları Alın:</strong> Seçtiğiniz antrenör, size özel egzersiz programları ve beslenme planları sunarak sağlıklı yaşam hedeflerinize ulaşmanıza yardımcı olur.</li>
+            <li><strong>Ilerlemenizi Takip Edin ve Motive Kalın:</strong> FitLife üzerinden ilerlemenizi kolayca takip edebilirsiniz. Bu süreçte motive olmak için birlikte çalıştığınız antrenörden destek alabilirsiniz.</li>
+        </ol>
+    
+        <a href="#contact" class="cta-button">Başlayın</a>
+    </section>
+
+    <section id="about">
+        <h2>Hakkımızda</h2>
+        <p>FitLife, kişiselleştirilmiş fitness rehberliği için başvuracağınız platformdur. Size özel egzersiz programları, beslenme planları ve etkili iletişim kanalları aracılığıyla sağlık ve fitness hedeflerinize ulaşmanıza yardımcı olacak deneyimli fitness koçlarıyla sizi buluşturuyoruz.</p>
+    </section>
+
+    <section id="contact">
+        <h2>Bize Ulasın</h2>
+        <p>Fitness koçlarımızla iletişime geçmek için aşağıdaki formu doldurun.</p>
+        <form id="contactForm">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" required></textarea>
+
+            <button type="submit">Submit</button>
+        </form>
+    </section>
+
+    <section id="register">
+        <h2>Kayıt Ol</h2>
+        <p>Kişiselleştirilmiş antrenman programlarına ve beslenme planlarına erişmek için kaydolun.</p>
+        <form id="registerForm">
+            <label for="registerFirstName">First Name:</label>
+            <input type="text" id="registerFirstName" name="registerFirstName" required>
+
+            <label for="registerLastName">Last Name:</label>
+            <input type="text" id="registerLastName" name="registerLastName" required>
+
+            <label for="registerBirthDate">Birth Date:</label>
+            <input type="date" id="registerBirthDate" name="registerBirthDate" required>
+
+            <label for="registerGender">Gender:</label>
+            <select id="registerGender" name="registerGender" required>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+            </select>
+
+            <label for="registerEmail">Email:</label>
+            <input type="email" id="registerEmail" name="registerEmail" required>
+
+            <label for="registerPhoneNumber">Phone Number:</label>
+            <input type="tel" id="registerPhoneNumber" name="registerPhoneNumber" required>
+
+            <label for="registerPassword">Password:</label>
+            <input type="password" id="registerPassword" name="registerPassword" required>
+
+            <label for="registerConfirmPassword">Confirm Password:</label>
+            <input type="password" id="registerConfirmPassword" name="registerConfirmPassword" required>
+
+            <label for="registerProfilePhoto">Profile Photo:</label>
+            <input type="file" id="registerProfilePhoto" name="registerProfilePhoto" accept="image/*">
+
+            <button type="submit">Register</button>
+        </form>
+    </section>
+
+    <section id="login">
+        <h2>Giriş Yap</h2>
+        <p>Zaten kayıtlı mı ? Giriş yapın.</p>
+        <form id="loginForm">
+            <label for="loginEmail">Email:</label>
+            <input type="email" id="loginEmail" name="loginEmail" required>
+
+            <label for="loginFullName">İsim ve Soyisim:</label><!--buralar yeni-->
+            <input type="text" id="loginFullName" name="loginFullName" required>
+
+            <label for="loginPassword">Password:</label>
+            <input type="password" id="loginPassword" name="loginPassword" required>
+
+            <button type="submit">Giriş</button>
+            <button type="submit">Sifreyi Unuttum</button>
+            
+        </form>
+    </section>
+
+    <section id="videos">
+        <h2>Online Videos</h2>
+        <p>Çevrimiçi egzersiz videolarımızı izleyin ve formda kalın!</p>
+        <!-- Buraya video gömme kodları eklenebilir -->
+        <iframe width="565" height="315" src="https://www.youtube.com/embed/VIDEO_ID" frameborder="0" allowfullscreen></iframe>
+    </section>
+
+    <footer>
+        <p>&copy; 2023 Fitness Coach</p>
+    </footer>
+    
+    <script type="module">
+
+          //THIS IS WHERE YOU PASTE THE CODE TO CONNECT TO YOUR OWN DATABASE
+        //Copy and paste the CDN bit of code from your app that you created on Firebase.
+        //The script tag above is already there, so careful not to have duplicate script tags.
+        //After you've copied and pasted, just delete the unnecessary script tags. 
+   
+         // Import the functions you need from the SDKs you need
+         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js";
+         // TODO: Add SDKs for Firebase products that you want to use
+         // https://firebase.google.com/docs/web/setup#available-libraries
+
+         // Your web app's Firebase configuration
+         const firebaseConfig = {
+           apiKey: "AIzaSyDfEODCehjmxmyS537GkHcfWfi-R6dBoic",
+           authDomain: "fitlifedatabase.firebaseapp.com",
+           databaseURL: "https://fitlifedatabase-default-rtdb.europe-west1.firebasedatabase.app",
+           projectId: "fitlifedatabase",
+           storageBucket: "fitlifedatabase.appspot.com",
+           messagingSenderId: "698017456952",
+           appId: "1:698017456952:web:f0069ba9afc6b100f797cd"
+         };
+
+  
+         // Initialize Firebase
+         const app = initializeApp(firebaseConfig);
+
+
+         import {getDatabase, ref, get, set, child, update, remove}
+        from "https://www.gstatic.com/firebasejs/10.7.0/firebase-database.js"
+        //Copy and Paste the URL from near the top of the CDN you pasted in from firebase
+        // (the one where you imported "initializeApp" from),
+        //but change "firebase-app" to "firebase-database"
+        
+
+        const db = getDatabase();
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Sayfa yüklendiğinde gizli bölümleri kontrol et
+            checkHash();
+
+            
+            window.addEventListener('hashchange', checkHash);
+
+            // İletişim formu olay 
+            document.getElementById('contactForm').addEventListener('submit', function (e) {
+                e.preventDefault();
+                
+                // Add your form submission logic here, e.g., send data to a server
+                alert('Form submitted successfully!');
+            });
+
+            
+            document.getElementById('registerForm').addEventListener('submit', function (e) {
+                e.preventDefault();
+                
+                registerUser();
+            });
+
+           
+            document.getElementById('loginForm').addEventListener('submit', function (e) {
+                e.preventDefault();
+                
+                loginUser();
+            });
+        });
+
+        function checkHash() {
+            
+            var hash = window.location.hash.substring(1);
+            var sections = ['home', 'about', 'contact', 'register', 'login', 'videos'];
+
+            sections.forEach(function(section) {
+                if (section === hash) {
+                    document.getElementById(section).style.display = 'block';
+                } else {
+                    document.getElementById(section).style.display = 'none';
+                }
+            });
+        }
+
+        function registerUser() {
+            var firstName = document.getElementById('registerFirstName').value;
+            var lastName = document.getElementById('registerLastName').value;
+            var birthDate = document.getElementById('registerBirthDate').value;
+            var gender = document.getElementById('registerGender').value;
+            var email = document.getElementById('registerEmail').value;
+            var phoneNumber = document.getElementById('registerPhoneNumber').value;
+            var password = document.getElementById('registerPassword').value;
+            var confirmPassword = document.getElementById('registerConfirmPassword').value;
+            var profilePhoto = document.getElementById('registerProfilePhoto').value;
+
+            console.log("First Name:", firstName);
+            console.log("Last Name:", lastName);
+            console.log("Birth Date:", birthDate);
+            console.log("Gender:", gender);
+            console.log("Email:", email);
+            console.log("Phone Number:", phoneNumber);
+            console.log("Password:", password);
+            console.log("Confirm Password:", confirmPassword);
+            console.log("Profile Photo:", profilePhoto);
+
+            // Add your registration validation and submission logic here
+            // Check if passwords match, validate email format, etc.
+
+            if(password==confirmPassword){
+                alert("successfully Called");
+            set(ref(db, "Kullanicilar/"+ firstName +" " +lastName),{
+                isim: firstName,
+                soyisim:lastName,
+                dogumTarihi:birthDate,
+                cinsiyet:gender,
+                mailAdresi: email,
+                telefonNumarasi:phoneNumber,
+                sifre:password,
+            })
+            .then(()=>{
+                alert("Data added successfully");
+            })
+            .catch((error)=>{
+                alert(error);
+            });
+            }
+            
+        }
+
+        function loginUser() {
+            var email = document.getElementById('loginEmail').value;
+            var fullname = document.getElementById('loginFullName').value;//yeni satır 
+            var password = document.getElementById('loginPassword').value;
+            alert(email+"Login successful!"+password);
+            // Add your login validation and submission logic here
+            // Check if email and password match with the registered user
+
+            const dbref = ref(db);
+
+            get(child(dbref, "Kullanicilar/" + fullname))
+            .then((snapshot)=>{
+                if(snapshot.exists()){
+                    
+                    /*findName.innerHTML = "Name: " + snapshot.val().Name;
+                    findAge.innerHTML = "Age: " + snapshot.val().Age;*/
+                    console.log(snapshot.val().isim+" "+snapshot.val().soyisim+" "+snapshot.val().mailAdresi);
+                    localStorage.setItem("kullaniciFullName",fullname);
+                    window.location.href = "kullanici.html";
+
+                } else {
+                    alert("No data found");
+                }
+            })
+            .catch((error)=>{
+                alert(error)
+            })
+
+            
+        }
+    </script>
+        
+       
+</body>
+</html>

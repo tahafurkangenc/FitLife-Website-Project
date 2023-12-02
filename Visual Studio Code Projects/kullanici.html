@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-image: url("arkaplan.png");
+    }
+
+    header {
+      background: rgba(0, 0, 0, 0.5);
+      color: #fff;
+      padding: 10px;
+      text-align: center;
+    }
+
+    main {
+      max-width: 600px;
+      margin: 20px auto;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+      color:#fff;
+    }
+
+    input {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 16px;
+      box-sizing: border-box;
+    }
+
+    select {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 16px;
+      box-sizing: border-box;
+    }
+
+    button {
+      background-color: #333;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #555;
+      transition: 0.5s;
+    }
+
+    main input,select{
+        background: transparent; /* Input alanını şeffaf yapar */
+            border: 1px solid #fff; /* Kenar çizgilerini beyaz yapar */
+            color: #fff; /* Yazı rengini beyaz yapar */
+            border-radius: 10px;
+    }
+    
+  </style>
+  <title>User Information Page</title>
+</head>
+<body>
+  <header>
+    
+    <img src="logo.png" alt="Logo" style="max-width: 200px;">
+      
+  </header>
+
+  <main>
+    <label for="firstName">First Name:</label>
+    <input type="text" id="firstName" name="firstName" readonly value="John">
+
+    <label for="lastName">Last Name:</label>
+    <input type="text" id="lastName" name="lastName" readonly value="Doe">
+
+    <label for="birthDate">Birth Date:</label>
+    <input type="text" id="birthDate" name="birthDate" readonly value="01/01/1990">
+
+    <label for="gender">Gender:</label>
+    <select id="gender" name="gender" disabled>
+      <option value="male" selected>Male</option>
+      <option value="female">Female</option>
+      <option value="other">Other</option>
+    </select>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" readonly value="john.doe@example.com">
+
+    <label for="phoneNumber">Phone Number:</label>
+    <input type="tel" id="phoneNumber" name="phoneNumber" readonly value="+1234567890">
+
+    <button type="button" onclick="editUserInfo()">Edit Information</button>
+  </main>
+
+  <script type="module">
+     // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js";
+      // TODO: Add SDKs for Firebase products that you want to use
+      // https://firebase.google.com/docs/web/setup#available-libraries
+     
+      // Your web app's Firebase configuration
+      const firebaseConfig = {
+        apiKey: "AIzaSyDfEODCehjmxmyS537GkHcfWfi-R6dBoic",
+        authDomain: "fitlifedatabase.firebaseapp.com",
+        databaseURL: "https://fitlifedatabase-default-rtdb.europe-west1.firebasedatabase.app",
+        projectId: "fitlifedatabase",
+        storageBucket: "fitlifedatabase.appspot.com",
+        messagingSenderId: "698017456952",
+        appId: "1:698017456952:web:f0069ba9afc6b100f797cd"
+      };
+     
+       // Initialize Firebase
+       const app = initializeApp(firebaseConfig);
+       import {getDatabase, ref, get, set, child, update, remove}
+       from "https://www.gstatic.com/firebasejs/10.7.0/firebase-database.js"
+       const db = getDatabase();
+
+       console.log("KEY:"+localStorage.getItem("kullaniciFullName"));
+        let fullnameofdatabase = localStorage.getItem("kullaniciFullName")
+        const dbref = ref(db);
+        get(child(dbref, "Kullanicilar/" + fullnameofdatabase))
+            .then((snapshot)=>{
+                if(snapshot.exists()){
+                    
+                    /*findName.innerHTML = "Name: " + snapshot.val().Name;
+                    findAge.innerHTML = "Age: " + snapshot.val().Age;*/
+                    console.log(snapshot.val().isim+" "+snapshot.val().soyisim+" "+snapshot.val().mailAdresi+" "+snapshot.val().dogumTarihi+" "+ snapshot.val().cinsiyet+" "+snapshot.val().telefonNumarasi);
+                    document.getElementById('firstName').value=snapshot.val().isim
+                    document.getElementById('lastName').value=snapshot.val().soyisim
+                    document.getElementById('birthDate').value=snapshot.val().dogumTarihi
+                    document.getElementById('gender').value=snapshot.val().cinsiyet
+                    document.getElementById('email').value=snapshot.val().mailAdresi
+                    document.getElementById('phoneNumber').value=snapshot.val().telefonNumarasi
+                } else {
+                    alert("No data found");
+                }
+            })
+            .catch((error)=>{
+                alert(error)
+            })
+       
+    function editUserInfo() {
+
+        
+      // Kullanıcı bilgilerini düzenleme işlemleri burada yapılabilir.
+      // Örneğin, input ve select elementlerini etkinleştirme gibi.
+      document.getElementById('firstName').removeAttribute('readonly');
+      document.getElementById('lastName').removeAttribute('readonly');
+      document.getElementById('birthDate').removeAttribute('readonly');
+      document.getElementById('gender').removeAttribute('disabled');
+      document.getElementById('email').removeAttribute('readonly');
+      document.getElementById('phoneNumber').removeAttribute('readonly');
+    }
+
+  </script>
+</body>
+</html>
